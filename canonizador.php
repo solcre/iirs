@@ -2,7 +2,7 @@
 
  
  /**
- * Remueve palabras comunes
+ * Remueve stopwords
  */
 function quitarComunes($cadena){
     $comunes = array('la','el','él','de','la','las','que','a','y','o','ya','en','los','las','le','lo','un','una','se','es','no','si','por','con','del','al','su','sus');
