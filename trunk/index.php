@@ -6,14 +6,14 @@
   </head>
   <body>
     <?php
-	//pruebas
+	 //Probando eliminar stopwords
          
          $cadena="esto si contiene palabras comunes, tal vez una dos o tres, ya no se cuantas";
-         echo "Cadena inicial: ".$cadena;
+         echo "<b>Cadena inicial: </b>".$cadena;
          echo "<br/>";
          echo "<br/>";
          $canonica=quitarComunes($cadena);
-         echo "Cadena final: ".$canonica;
+         echo "<b>Cadena final: </b>".$canonica;
          echo "<br/>";
          
     ?>  
