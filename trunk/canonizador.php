@@ -62,7 +62,9 @@ function relevancias($cadena){
 
 }
 
-
+ /**
+ * Se usa para poder realizar una comparacion por indices para el ordenado por relevancia con uasort.
+ */
 function comparacion_puntajes($a, $b) {
     if ($a == $b) {
         return 0;
