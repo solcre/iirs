@@ -15,6 +15,8 @@
          $canonica=quitar_comunes($cadena);
          echo "<b>Cadena final: </b>".$canonica;
          echo "<br/>";
+
+	 //probando generar relevancias en indice
 	 relevancias($cadena);
          
     ?>  
