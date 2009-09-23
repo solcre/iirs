@@ -8,13 +8,14 @@
     <?php
 	 //Probando eliminar stopwords
          
-         $cadena="esto si contiene palabras comunes, tal vez una dos o tres, ya no se cuantas";
+         $cadena="cortando las palabras porque son las palabras muchisimisimas palabrotas a cortar porque las palabras son asi";
          echo "<b>Cadena inicial: </b>".$cadena;
          echo "<br/>";
          echo "<br/>";
-         $canonica=quitarComunes($cadena);
+         $canonica=quitar_comunes($cadena);
          echo "<b>Cadena final: </b>".$canonica;
          echo "<br/>";
+	 relevancias($cadena);
          
     ?>  
   </body>
