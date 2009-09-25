@@ -5,7 +5,7 @@
  * Remueve stopwords
  */
 function quitar_comunes($cadena){
-    $comunes = array('por','la',' a','el','de','las','que','y','o','ya','en','los','las','le','lo','un','una','se','es','no','si','con','del','al','su','sus','asi');
+    $comunes = array('por','la',' a','el','de','las','que','y','o','ya','en','los','las','le','lo','un','cualquier','una','se','es','no','si','con','del','al','su','sus','asi');
     return preg_replace('/\b('.implode('|',$comunes).')\b/','',$cadena);
 }
  
@@ -32,7 +32,7 @@ function relevancias($cadena){
 			}
 		} 
 	}
-	echo "<hr/>";
+	//echo "<hr/>";
 
 	echo "<h1>Palabras extraidas y cantidad de ocurrencias</h1>";
 	foreach($palabrasSinRepetidos as $palabraSR){
@@ -49,17 +49,19 @@ function relevancias($cadena){
 		//las lineas comentadas a continuación pertenecen al puntaje otorgado dando relevancia a las últimas palabras y no a la sprimeras.
 		//$posicion=strrpos($cadena, $palabraSR)/10;//la diferencia de el algoritmo de puntajes por derecha es que da la posición según caracteres y no según palabras
 		//$palabrasConPuntajes[$palabraSR]=((1+$posicion)/$cantPalabras)*$palabrasConPuntajes[$palabraSR];
+
 		$posicion++;
 	}
 
 
 	//ordenamos segun puntajes de menor a mayor
-	uasort($palabrasConPuntajes,'comparacion_puntajes');
-	echo "<h1>Puntaje asignado por palabra (seg&uacute;n posici&oacute;n y cantidad de ocurrencias)</h1>";
-	foreach($palabrasConPuntajes as $palabra=>$puntaje){
-		echo "<br/>La palabra \"<b>".$palabra."</b>\" tiene <b>".$puntaje."</b>";
-	}
-	echo "<hr/>";
+	//uasort($palabrasConPuntajes,'comparacion_puntajes');
+	//echo "<h1>Puntaje asignado por palabra (seg&uacute;n posici&oacute;n y cantidad de ocurrencias)</h1>";
+	//foreach($palabrasConPuntajes as $palabra=>$puntaje){
+		//echo "<br/>La palabra \"<b>".$palabra."</b>\" tiene <b>".$puntaje."</b>";
+	//}
+	//echo "<hr/>";
+	return $palabrasConPuntajes;
 
 
 }
@@ -91,9 +93,26 @@ function preparar_texto($cadena)
 			'u','u','u','U','U','U','c','C');
     $cadena = trim(str_replace($aCambiar, $cambiarPor, $cadena));
     $cadena = trim(str_replace('  ', ' ', $cadena));
-    return ereg_replace('[^A-Za-z0-9\_\-]', ' ', $cadena);
+    return ereg_replace('[^A-Za-z0-9\_\-\.]', ' ', $cadena);
 }       
       
+function array_sum_values() {
+    $return = array();
+    $intArgs = func_num_args();
+    $arrArgs = func_get_args();
+    if($intArgs < 1) trigger_error('Warning: Wrong parameter count for array_sum_values()', E_USER_WARNING);
+	   
+    foreach($arrArgs as $arrItem) {
+	if(!is_array($arrItem)) trigger_error('Warning: Wrong parameter values for array_sum_values()', E_USER_WARNING);
+	foreach($arrItem as $k => $v) {
+	    $return[$k] += $v;
+	}
+    }
+    return $return;
+}     
+
+
+
       
 ?>
 
